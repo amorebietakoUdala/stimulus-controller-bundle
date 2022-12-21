@@ -5,6 +5,10 @@ import { TempusDominus, extend } from '@eonasdan/tempus-dominus';
 import customDateFormat from '@eonasdan/tempus-dominus/dist/plugins/customDateFormat';
 
 class datetimepicker extends Controller {
+  static values = {
+    showClock: Boolean,
+    format: String,
+  }
 
    locale = null;
    connect() {
@@ -22,14 +26,14 @@ class datetimepicker extends Controller {
              year: true,
              month: true,
              date: true,
-             clock: false,
+             clock: this.hasShowClockValue ? this.showClockValue : false,
            },
          },
          debug: true,
          localization: {
            locale: this.locale+'-'+this.locale.toUpperCase(),
            dayViewHeaderFormat: { month: 'long', year: 'numeric' },
-           format: 'yyyy-MM-dd HH:mm',
+           format: this.hasFormatValue ? this.formatValue : 'yyyy-MM-dd HH:mm',
          },
      });
    }
