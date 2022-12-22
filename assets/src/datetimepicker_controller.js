@@ -29,7 +29,7 @@ class datetimepicker extends Controller {
              clock: this.hasShowClockValue ? this.showClockValue : false,
            },
          },
-         debug: true,
+         debug: false,
          localization: {
            locale: this.locale+'-'+this.locale.toUpperCase(),
            dayViewHeaderFormat: { month: 'long', year: 'numeric' },
