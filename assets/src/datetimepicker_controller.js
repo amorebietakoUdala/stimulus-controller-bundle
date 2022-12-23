@@ -34,6 +34,7 @@ class datetimepicker extends Controller {
            locale: this.locale+'-'+this.locale.toUpperCase(),
            dayViewHeaderFormat: { month: 'long', year: 'numeric' },
            format: this.hasFormatValue ? this.formatValue : 'yyyy-MM-dd HH:mm',
+	   hourCycle: 'h23',
          },
      });
    }
