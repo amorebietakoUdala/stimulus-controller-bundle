@@ -188,7 +188,7 @@ class table extends Controller {
             target.innerHTML = await response.text();
         }
         target.style.opacity = 1;
-        this.$table.bootstrapTable(this.getOptions());
+        this.connect();
     }
 }
      
