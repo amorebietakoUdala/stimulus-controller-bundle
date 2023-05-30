@@ -95,18 +95,19 @@ class table extends Controller {
 
     onClick(event) {
         event.preventDefault();
-        const destination = event.currentTarget.href;
+        let destination = event.currentTarget.href;
+        destination = destination + ( destination.includes('?') ? '&': '?' );
         const confirm = event.currentTarget.dataset.confirm;
         this.createQueryParameters(event);
         if ( confirm == "true") {
-            console.log(destination + '?' + this.params.toString());
-            createConfirmationAlert(destination + '?' + this.params.toString()); 
+            console.log(destination + this.params.toString());
+            createConfirmationAlert(destination + this.params.toString()); 
         } else {
-            console.log(destination + '?' + this.params.toString());
-            document.location.href= destination + '?' + this.params.toString(); 
+            console.log(destination + this.params.toString());
+            document.location.href= destination + this.params.toString(); 
         }
     }
-
+    
     createQueryParameters(event) {
         if ( this.$table != null ) {
             this.setPaginationParameters();

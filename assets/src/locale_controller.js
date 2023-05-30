@@ -6,7 +6,6 @@ class locale extends Controller {
     locale = null;
     connect() {
         this.locale = global.locale ?? document.getElementsByTagName("html")[0].getAttribute('lang');
-        console.log('Locale: ' + this.locale);
     }
 
     changeLocale(event) {
