@@ -102,8 +102,10 @@ class table extends Controller {
         if ( confirm == "true") {
             console.log(destination + this.params.toString());
             createConfirmationAlert(destination + this.params.toString()); 
+            this.dispatch('click');
         } else {
             console.log(destination + this.params.toString());
+            this.dispatch('click');
             document.location.href= destination + this.params.toString(); 
         }
     }
