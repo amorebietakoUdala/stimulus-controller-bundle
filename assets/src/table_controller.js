@@ -20,14 +20,16 @@ class table extends Controller {
         url: String,
         exportName: String,
         filters: Object,
+        options: Object,
     }
 
     params = new URLSearchParams(this.filtersValue ?? {});
     $table = null;
     locale = null;
+    options = null;
 
     getOptions() {
-        return {
+        let defaultOptions = {
             cache: false,
             showExport: true,
             exportTypes: ['excel'],
@@ -52,6 +54,13 @@ class table extends Controller {
             detailFormatter: this.detailFormatter,
             locale: this.locale + '-' + this.locale.toUpperCase(),
         };
+        for (let clave in this.optionsValue) {
+            if (defaultOptions.hasOwnProperty(clave)) {
+                defaultOptions[clave] = this.optionsValue[clave];
+            }
+        }
+        this.options = defaultOptions;
+        return this.options;
     }
 
     detailFormatter(index, row) {
