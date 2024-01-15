@@ -110,7 +110,9 @@ class table extends Controller {
         this.createQueryParameters(event);
         if ( confirm == "true") {
             console.log(destination + this.params.toString());
-            createConfirmationAlert(destination + this.params.toString()); 
+            const confirmTemplate = event.currentTarget.dataset.confirm_template != null ? '#'+event.currentTarget.dataset.confirm_template : null;
+            const confirmTextHtml = event.currentTarget.dataset.confirm_text != null ? event.currentTarget.dataset.confirm_text : null;
+            createConfirmationAlert(destination + this.params.toString(), confirmTextHtml, confirmTemplate); 
             this.dispatch('click');
         } else {
             console.log(destination + this.params.toString());
@@ -118,6 +120,8 @@ class table extends Controller {
             document.location.href= destination + this.params.toString(); 
         }
     }
+
+
     
     createQueryParameters(event) {
         if ( this.$table != null ) {

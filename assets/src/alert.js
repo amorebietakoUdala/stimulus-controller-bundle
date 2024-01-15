@@ -32,12 +32,17 @@ export function showAlertNoRedirection(title, html, confirmationButtonText, canc
     });
 }
 
-export function createConfirmationAlert(confirmURL) {
-    Swal.fire({
-        template: '#confirm'
-    }).then(function (result) {
-        if (result.value) {
-            document.location.href = confirmURL;
-        }
+export function createConfirmationAlert(confirmURL, html, template) {
+    let options = {
+        template: template != null ? template : '#confirm'
+    };
+    if ( html != null ) {
+        options['html'] = html;
+    }
+    Swal.fire(options)
+        .then(function (result) {
+            if (result.value) {
+                document.location.href = confirmURL;
+            }
     });
 }
