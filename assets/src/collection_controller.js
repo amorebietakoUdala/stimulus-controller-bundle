@@ -36,7 +36,7 @@ class collection extends Controller {
 
    removeElement(e) {
       e.preventDefault();
-      var memberFormLi = $(e.currentTarget).parent().parent();
+      var memberFormLi = $(e.currentTarget).closest('li');
       memberFormLi.remove();
    }
 }
